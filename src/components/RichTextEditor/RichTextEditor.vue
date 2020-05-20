@@ -1,7 +1,7 @@
 <template>
-  <div class="editor">
+  <div>
     <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
-      <div>
+      <div width=100%>
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.bold() }"
@@ -120,22 +120,6 @@
       </div>
     </editor-menu-bar>
     <editor-content :editor="editor" />
-    <div>
-      <h3>html</h3>
-      <p>{{ editorContentHtml }}</p>
-    </div>
-    <div>
-      <h3>json</h3>
-      <p>{{ editorContentJson }}</p>
-    </div>
-    <div>
-      <h3>v-html</h3>
-      <div v-html="editorContentHtml"></div>
-    </div>
-    <div>
-      <h3>innerHTML</h3>
-      <textarea id="textAreaInnerHtml" rows="30" cols="80"></textarea>
-    </div>
   </div>
 </template>
 
@@ -170,6 +154,7 @@ export default {
     EditorContent,
     EditorMenuBarIcon
   },
+  props: ["menuBarButtonBackgroundColor"],
   data() {
     return {
       editor: null,
@@ -220,3 +205,9 @@ export default {
   }
 };
 </script>
+
+<style>
+.menubar__button {
+  background-color:burlywood
+}
+</style>
