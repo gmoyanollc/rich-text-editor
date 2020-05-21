@@ -21,7 +21,6 @@
         v-bind:content-initial-value="editorContentHtml"
         v-bind:content-property="RICH_TEXT_EDITOR.PROPERTY_NAME"
         style="border: thin solid #000000"
-        ref="richTextEditor"
       />
       <input type="submit" value="Submit" />
     </form>

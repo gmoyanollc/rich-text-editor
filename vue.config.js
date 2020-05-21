@@ -1,6 +1,7 @@
 module.exports = {
-  configureWebpack: {
+  /*configureWebpack: {
     devtool: 'source-map'
-  },
+  },*/// vscode add-in
+  mode: "development",
   publicPath: "./",
 };
