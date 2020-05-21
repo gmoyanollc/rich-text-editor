@@ -1,16 +1,14 @@
 <template>
-  <sample-form/>
+  <sample-form />
 </template>
 
 <script>
-import SampleForm from "./components/SampleForm"
+import SampleForm from "./components/SampleForm";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
     SampleForm
   }
-}
-
+};
 </script>
-

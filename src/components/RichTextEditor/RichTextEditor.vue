@@ -1,7 +1,7 @@
 <template>
   <div id="richTextEditorDiv">
     <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
-      <div width=100%>
+      <div width="100%">
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.bold() }"
@@ -144,8 +144,8 @@ import {
   Underline,
   History
 } from "tiptap-extensions";
-import EditorMenuBarIcon from "./EditorMenuBarIcon"
-import { mapGetters, mapState } from 'vuex'
+import EditorMenuBarIcon from "./EditorMenuBarIcon";
+import { mapGetters, mapState } from "vuex";
 
 export default {
   name: "TiptapEditor",
@@ -160,17 +160,11 @@ export default {
       editorContentHtml: "html"
     };
   },
+  // prettier-ignore
   props: { 
     contentDispatch:      String,
     contentInitialValue:  String,
     contentProperty:      String
-  },
-  methods: {
-    /* getEditorContentHtml: () => {
-      //debugger; 
-      windows.console.log("child.editorContentHtml:", this.editorContentHtml); 
-      return this.editorContentHtml
-    } */
   },
   mounted() {
     this.editor = new Editor({
@@ -193,12 +187,12 @@ export default {
         new Underline(),
         new History()
       ],
-      //content: "<p>Modify me. I'm just a boring paragraph...</p>",
       content: this.contentInitialValue,
       onUpdate: ({ getJSON, getHTML }) => {
-        //this.editorContentHtml = getHTML();
-        debugger
-        this.$store.dispatch(this.contentDispatch, { property: this.contentProperty, value: getHTML() } )
+        this.$store.dispatch(this.contentDispatch, {
+          property: this.contentProperty,
+          value: getHTML()
+        });
       }
     });
   },
@@ -210,6 +204,6 @@ export default {
 
 <style>
 .menubar__button {
-  background-color:burlywood
+  background-color: burlywood;
 }
 </style>
