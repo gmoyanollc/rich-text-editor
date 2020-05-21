@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="richTextEditorDiv">
     <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
       <div width=100%>
         <button
@@ -154,13 +154,23 @@ export default {
     EditorContent,
     EditorMenuBarIcon
   },
-  props: ["menuBarButtonBackgroundColor"],
   data() {
     return {
       editor: null,
-      editorContentHtml: "html",
-      editorContentJson: "json"
+      editorContentHtml: "html"
     };
+  },
+  props: { 
+    contentDispatch:      String,
+    contentInitialValue:  String,
+    contentProperty:      String
+  },
+  methods: {
+    /* getEditorContentHtml: () => {
+      //debugger; 
+      windows.console.log("child.editorContentHtml:", this.editorContentHtml); 
+      return this.editorContentHtml
+    } */
   },
   mounted() {
     this.editor = new Editor({
@@ -183,20 +193,12 @@ export default {
         new Underline(),
         new History()
       ],
-      content: "<p>Modify me. I'm just a boring paragraph...</p>",
-      //content: this.$store.state.editorContent,
-      /*editorProps: {
-        transformPastedHTML: data => {
-          debugger
-          return data.replace( /g/g, 'd')
-        }
-      },*/
+      //content: "<p>Modify me. I'm just a boring paragraph...</p>",
+      content: this.contentInitialValue,
       onUpdate: ({ getJSON, getHTML }) => {
-        //debugger
-        //this.$store.dispatch("setEditorContent", getHTML())
-        this.editorContentHtml = getHTML();
-        this.editorContentJson = getJSON();
-        document.getElementById("textAreaInnerHtml").value = this.$el.innerHTML;
+        //this.editorContentHtml = getHTML();
+        debugger
+        this.$store.dispatch(this.contentDispatch, { property: this.contentProperty, value: getHTML() } )
       }
     });
   },
