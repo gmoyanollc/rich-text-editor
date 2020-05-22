@@ -13,7 +13,7 @@ npm install
 # serve for debugging with hot reload at localhost:8080
 npm run dev
 
-# build for debugging on a remote http server
+# build for debugging from a remote http server
 npm run dev-build
 
 # build for production with minification
@@ -27,7 +27,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 ## Usage
 
- 1. Insert and style `RichTextEditor` element and in parent Template: 
+ 1. Insert and style `RichTextEditor` element and in the parent Template: 
  
 ``` xml
 <template>
@@ -36,7 +36,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
   />
 </template>
 ```
- 2. Bind `RichTextEditor` props to parent store dispatch name, state property name and the property's initial value. 
+ 2. Bind `RichTextEditor` props for updates to the parent store.  Pass the dispatch name, state property name and the property's initial value. 
 
  ``` xml
 <template>
