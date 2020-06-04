@@ -203,7 +203,61 @@ export default {
 </script>
 
 <style>
-.menubar__button {
-  background-color: burlywood;
+.menubar {
+  margin-bottom: 1rem;
+  -webkit-transition: visibility 0.2s 0.4s, opacity 0.2s 0.4s;
+  transition: visibility 0.2s 0.4s, opacity 0.2s 0.4s;
 }
+.menubar.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+.menubar.is-focused {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transition: visibility 0.2s, opacity 0.2s;
+  transition: visibility 0.2s, opacity 0.2s;
+}
+.menubar__button {
+  font-weight: 700;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  background: transparent;
+  border: 0;
+  color: #000;
+  padding: 0.2rem 0.5rem;
+  margin-right: 0.2rem;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.menubar__button:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+.menubar__button.is-active {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+.menubar span.menubar__button {
+  font-size: 13.3333px;
+}
+.menububble {
+  position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  z-index: 20;
+  background: #000;
+  border-radius: 5px;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  visibility: hidden;
+  opacity: 0;
+  -webkit-transition: opacity 0.2s, visibility 0.2s;
+  transition: opacity 0.2s, visibility 0.2s;
+}
+/*.menubar__button {
+  background-color: burlywood;
+}*/
 </style>
