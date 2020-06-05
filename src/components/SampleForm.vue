@@ -16,13 +16,16 @@
         v-model="lastName"
       /><br /><br />
       <slot />
-      <RichTextEditor
-        v-bind:content-dispatch="RICH_TEXT_EDITOR.DISPATCH_NAME"
-        v-bind:content-initial-value="editorContentHtml"
-        v-bind:content-property="RICH_TEXT_EDITOR.PROPERTY_NAME"
-        style="border: thin solid #000000"
-      />
-      <input type="submit" value="Submit" />
+      <div id="richTextEditorDiv">
+        <RichTextEditor
+          v-bind:content-dispatch="RICH_TEXT_EDITOR.DISPATCH_NAME"
+          v-bind:content-initial-value="editorContentHtml"
+          v-bind:content-property="RICH_TEXT_EDITOR.PROPERTY_NAME"
+        />
+      </div>
+      <div>
+        <input type="submit" value="Submit" />
+      </div>
     </form>
   </div>
 </template>
@@ -86,3 +89,13 @@ export default {
   }
 };
 </script>
+
+<style>
+  #richTextEditorDiv {
+    border-color: rgb(182, 181, 181);
+    border-radius: 5px;
+    border-style: solid;
+    border-width: thin;
+    padding: 0px 10px;
+  }
+</style>

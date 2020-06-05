@@ -1,124 +1,142 @@
 <template>
-  <div id="richTextEditorDiv">
-    <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
-      <div width="100%">
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.bold() }"
-          @click="commands.bold"
-        >
-          <EditorMenuBarIcon name="bold" />
-        </button>
+  <div id="richTextEditorContainer">
+    <div id="editorMenuBarContainer">
+      <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
+        <div id="editorMenuBarDiv">
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.bold() }"
+            @click="commands.bold"
+          >
+            <EditorMenuBarIcon name="bold" />
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.italic() }"
-          @click="commands.italic"
-        >
-          <EditorMenuBarIcon name="italic" />
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.italic() }"
+            @click="commands.italic"
+          >
+            <EditorMenuBarIcon name="italic" />
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.strike() }"
-          @click="commands.strike"
-        >
-          <EditorMenuBarIcon name="strike" />
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.strike() }"
+            @click="commands.strike"
+          >
+            <EditorMenuBarIcon name="strike" />
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.underline() }"
-          @click="commands.underline"
-        >
-          <EditorMenuBarIcon name="underline" />
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.underline() }"
+            @click="commands.underline"
+          >
+            <EditorMenuBarIcon name="underline" />
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.code() }"
-          @click="commands.code"
-        >
-          <EditorMenuBarIcon name="code" />
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.code() }"
+            @click="commands.code"
+          >
+            <EditorMenuBarIcon name="code" />
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.paragraph() }"
-          @click="commands.paragraph"
-        >
-          <EditorMenuBarIcon name="paragraph" />
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.paragraph() }"
+            @click="commands.paragraph"
+          >
+            <EditorMenuBarIcon name="paragraph" />
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 1 }) }"
-          @click="commands.heading({ level: 1 })"
-        >
-          H1
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.heading({ level: 1 }) }"
+            @click="commands.heading({ level: 1 })"
+          >
+            H1
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 2 }) }"
-          @click="commands.heading({ level: 2 })"
-        >
-          H2
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.heading({ level: 2 }) }"
+            @click="commands.heading({ level: 2 })"
+          >
+            H2
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.heading({ level: 3 }) }"
-          @click="commands.heading({ level: 3 })"
-        >
-          H3
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.heading({ level: 3 }) }"
+            @click="commands.heading({ level: 3 })"
+          >
+            H3
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.bullet_list() }"
-          @click="commands.bullet_list"
-        >
-          <EditorMenuBarIcon name="ul" />
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.bullet_list() }"
+            @click="commands.bullet_list"
+          >
+            <EditorMenuBarIcon name="ul" />
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.ordered_list() }"
-          @click="commands.ordered_list"
-        >
-          <EditorMenuBarIcon name="ol" />
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.ordered_list() }"
+            @click="commands.ordered_list"
+          >
+            <EditorMenuBarIcon name="ol" />
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.blockquote() }"
-          @click="commands.blockquote"
-        >
-          <EditorMenuBarIcon name="quote" />
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.blockquote() }"
+            @click="commands.blockquote"
+          >
+            <EditorMenuBarIcon name="quote" />
+          </button>
 
-        <button
-          class="menubar__button"
-          :class="{ 'is-active': isActive.code_block() }"
-          @click="commands.code_block"
-        >
-          <EditorMenuBarIcon name="code" />
-        </button>
+          <button
+            type="button"
+            class="menubar__button"
+            :class="{ 'is-active': isActive.code_block() }"
+            @click="commands.code_block"
+          >
+            <EditorMenuBarIcon name="code" />
+          </button>
 
-        <button class="menubar__button" @click="commands.horizontal_rule">
-          <EditorMenuBarIcon name="hr" />
-        </button>
+          <button
+            type="button" class="menubar__button" @click="commands.horizontal_rule">
+            <EditorMenuBarIcon name="hr" />
+          </button>
 
-        <button class="menubar__button" @click="commands.undo">
-          <EditorMenuBarIcon name="undo" />
-        </button>
+          <button
+            type="button" class="menubar__button" @click="commands.undo">
+            <EditorMenuBarIcon name="undo" />
+          </button>
 
-        <button class="menubar__button" @click="commands.redo">
-          <EditorMenuBarIcon name="redo" />
-        </button>
-      </div>
-    </editor-menu-bar>
+          <button
+            type="button" class="menubar__button" @click="commands.redo">
+            <EditorMenuBarIcon name="redo" />
+          </button>
+        </div>
+      </editor-menu-bar>
+    </div>
     <editor-content :editor="editor" />
   </div>
 </template>
@@ -203,6 +221,10 @@ export default {
 </script>
 
 <style>
+#editorMenuBarDiv {
+  /*border-style: dotted;*/
+  text-align: center;
+}
 .menubar {
   margin-bottom: 1rem;
   -webkit-transition: visibility 0.2s 0.4s, opacity 0.2s 0.4s;
@@ -257,7 +279,7 @@ export default {
   -webkit-transition: opacity 0.2s, visibility 0.2s;
   transition: opacity 0.2s, visibility 0.2s;
 }
-/*.menubar__button {
-  background-color: burlywood;
-}*/
+.ProseMirror {
+  outline: none;
+}
 </style>
