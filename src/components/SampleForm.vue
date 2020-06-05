@@ -1,6 +1,6 @@
 <template>
   <div>
-    <form>
+    <form @submit="stopSubmitting">
       <label for="firstName">First name:</label>
       <input
         type="text"
@@ -20,7 +20,6 @@
         v-bind:content-dispatch="RICH_TEXT_EDITOR.DISPATCH_NAME"
         v-bind:content-initial-value="editorContentHtml"
         v-bind:content-property="RICH_TEXT_EDITOR.PROPERTY_NAME"
-        style="border: thin solid #000000"
       />
       <input type="submit" value="Submit" />
     </form>
@@ -36,11 +35,7 @@ export default {
     RichTextEditor
   },
   computed: {
-    ...mapGetters([
-      "getFirstName",
-      "getLastName",
-      "getEditorContentHtml"
-    ]),
+    ...mapGetters(["getFirstName", "getLastName", "getEditorContentHtml"]),
     ...mapState(["sampleFormStore"]),
     firstName: {
       get() {
@@ -83,6 +78,11 @@ export default {
         PROPERTY_NAME: "editorContentHtml"
       }
     };
+  },
+  methods: {
+    stopSubmitting: e => {
+      e.preventDefault();
+    }
   }
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
-  <div id="richTextEditorDiv">
+  <div>
     <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
-      <div width="100%">
+      <div style="text-align: center">
         <button
           class="menubar__button"
           :class="{ 'is-active': isActive.bold() }"
@@ -119,7 +119,9 @@
         </button>
       </div>
     </editor-menu-bar>
-    <editor-content :editor="editor" />
+    <div id="richTextEditorDiv">
+      <editor-content :editor="editor" />
+    </div>
   </div>
 </template>
 
@@ -204,6 +206,18 @@ export default {
 
 <style>
 .menubar__button {
-  background-color: burlywood;
+  background-color: #fff;
+  border: none;
+}
+.ProseMirror {
+  height: 500px;
+}
+
+.ProseMirror:focus {
+  outline: none;
+}
+#richTextEditorDiv {
+  border: 1px solid black;
+  overflow-y: auto;
 }
 </style>
