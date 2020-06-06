@@ -4,6 +4,8 @@
 
 RichTextEditor is a Vue component that enables the editting and formatting of text content.  Formatted text content is represented with HTML tags.  When rendered as HTML, the text content is displayed formatted.
 
+The parent component only interfaces with RichTextEditor and has control its styling. The parent does not have control of styling the EditorMenuBar component. A quirk is that the menu bar is scrolled away when the editor fills.
+
 ## Build Setup
 
 ``` bash

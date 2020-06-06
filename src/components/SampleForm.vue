@@ -1,33 +1,33 @@
 <template>
-  <div>
-    <form>
-      <label for="firstName">First name:</label>
-      <input
+  <b-container>
+    <br /><br />
+    <b-form>
+      <b-form-input
         type="text"
         id="firstName"
         name="firstName"
+        placeholder="First Name"
         v-model="firstName"
       /><br /><br />
-      <label for="lastName">Last name:</label>
-      <input
+      <b-form-input
         type="text"
         id="lastName"
         name="lastName"
+        placeholder="Last Name"
         v-model="lastName"
       /><br /><br />
       <slot />
-      <div id="richTextEditorDiv">
+      <b-container id="richTextEditorDiv">
         <RichTextEditor
           v-bind:content-dispatch="RICH_TEXT_EDITOR.DISPATCH_NAME"
           v-bind:content-initial-value="editorContentHtml"
           v-bind:content-property="RICH_TEXT_EDITOR.PROPERTY_NAME"
         />
-      </div>
-      <div>
-        <input type="submit" value="Submit" />
-      </div>
-    </form>
-  </div>
+      </b-container>
+      <br /><br />
+      <b-button>Submit</b-button>
+    </b-form>
+  </b-container>
 </template>
 
 <script>
@@ -96,6 +96,8 @@ export default {
     border-radius: 5px;
     border-style: solid;
     border-width: thin;
+    height: 20pc;
+    overflow: auto;
     padding: 0px 10px;
   }
 </style>
