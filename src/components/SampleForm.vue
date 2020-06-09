@@ -17,13 +17,14 @@
         v-model="lastName"
       /><br /><br />
       <slot />
-      <b-container id="richTextEditorDiv">
+      <div id="richTextEditorDiv">
         <RichTextEditor
           v-bind:content-dispatch="RICH_TEXT_EDITOR.DISPATCH_NAME"
           v-bind:content-initial-value="editorContentHtml"
           v-bind:content-property="RICH_TEXT_EDITOR.PROPERTY_NAME"
+          v-bind:content-style="RICH_TEXT_EDITOR.STYLE"
         />
-      </b-container>
+      </div>
       <br /><br />
       <b-button>Submit</b-button>
     </b-form>
@@ -83,7 +84,8 @@ export default {
     return {
       RICH_TEXT_EDITOR: {
         DISPATCH_NAME: "setSampleFormStore",
-        PROPERTY_NAME: "editorContentHtml"
+        PROPERTY_NAME: "editorContentHtml",
+        STYLE: "height: 200px; overflow: auto;"
       }
     };
   }
@@ -96,8 +98,7 @@ export default {
     border-radius: 5px;
     border-style: solid;
     border-width: thin;
-    height: 20pc;
-    overflow: auto;
-    padding: 0px 10px;
+    position: relative;
+    width: 100%;
   }
 </style>

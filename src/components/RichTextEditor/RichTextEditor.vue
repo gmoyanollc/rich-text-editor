@@ -1,6 +1,6 @@
 <template>
-  <div id="richTextEditorContainer">
-    <div id="editorMenuBarContainer">
+  <div id="templateRootDiv">
+    <div id="editorMenuBarDiv">
       <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
         <div id="editorMenuBarDiv">
           <button
@@ -137,7 +137,10 @@
         </div>
       </editor-menu-bar>
     </div>
-    <editor-content :editor="editor" />
+    <div id="editorContentDiv" v-bind:style="contentStyle">
+      
+      <editor-content :editor="editor"/>
+    </div>
   </div>
 </template>
 
@@ -182,7 +185,8 @@ export default {
   props: { 
     contentDispatch:      String,
     contentInitialValue:  String,
-    contentProperty:      String
+    contentProperty:      String,
+    contentStyle:         String
   },
   mounted() {
     this.editor = new Editor({
@@ -221,9 +225,19 @@ export default {
 </script>
 
 <style>
+/*#editorContentDiv {*/
+  /* edit height value here and scroll content without menubar */
+  /* comment height property to allow area to grow */
+  /*height: 200px;
+  overflow: auto;
+}*/
 #editorMenuBarDiv {
-  /*border-style: dotted;*/
   text-align: center;
+}
+#templateRootDiv {
+  height: 100%;
+  position: relative;
+  width: 100%;
 }
 .menubar {
   margin-bottom: 1rem;
