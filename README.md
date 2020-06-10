@@ -27,28 +27,61 @@ npm run build --report
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-## Usage
+## Usage In Your Component
 
- 1. Insert and style `RichTextEditor` element and in the parent Template: 
+ 1. Copy `RichTextEditor` folder to your project's components folder.
  
-``` xml
-<template>
-  <RichTextEditor
-    style="border: thin solid #000000"
-  />
-</template>
-```
- 2. Bind `RichTextEditor` props for updates to the parent store.  Pass the dispatch name, state property name and the property's initial value. 
+ 2. Install Tiptap components. 
 
- ``` xml
-<template>
-  <RichTextEditor
-    v-bind:content-dispatch="STORE_DISPATCH_NAME"
-    v-bind:content-initial-value="editorContentHtml"
-    v-bind:content-property="STORE_PROPERTY_NAME"
-    style="border: thin solid #000000"
-  />
-</template>
+``` bash
+  npm install --save tiptap tiptap-extensions
+```
+
+ 3. Insert a `RichTextEditor` element in your component: 
+ 
+``` html
+  <template>
+    <RichTextEditor/>
+  </template>
+```
+
+ 4. Import and export `Rich Text Editor`:
+
+``` javascript
+  import RichTextEditor from "./RichTextEditor/RichTextEditor";
+  export default {
+    components: {
+      RichTextEditor
+    }
+  }
+```
+
+ 5. Declare and initialize local keys and values to bind with `Rich Text Editor` props:
+
+``` javascript
+  data: () => {
+    return {
+      RICH_TEXT_EDITOR: {
+        DISPATCH_NAME: "setSampleFormStore",
+        PROPERTY_NAME: "editorContentHtml",
+        STYLE: "height: 200px; overflow: auto;"
+      }
+    };
+  }
+```
+
+6. Bind `RichTextEditor` props to the parent store and optional styling.  Pass the dispatch name, state property name and the property's initial value. 
+
+``` xml
+  <template>
+    <RichTextEditor
+      <RichTextEditor
+        v-bind:content-dispatch="RICH_TEXT_EDITOR.DISPATCH_NAME"
+        v-bind:content-initial-value="editorContentHtml"
+        v-bind:content-property="RICH_TEXT_EDITOR.PROPERTY_NAME"
+        v-bind:content-style="RICH_TEXT_EDITOR.STYLE"
+      />
+  </template>
 ```
 
 ## Sample

@@ -4,6 +4,7 @@
       <editor-menu-bar :editor="editor" v-slot="{ commands, isActive }">
         <div id="editorMenuBarDiv">
           <button
+            title="bold"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.bold() }"
@@ -13,6 +14,7 @@
           </button>
 
           <button
+            title="italic"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.italic() }"
@@ -22,6 +24,7 @@
           </button>
 
           <button
+            title="strike"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.strike() }"
@@ -31,6 +34,7 @@
           </button>
 
           <button
+            title="underline"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.underline() }"
@@ -40,6 +44,7 @@
           </button>
 
           <button
+            title="code"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.code() }"
@@ -49,6 +54,7 @@
           </button>
 
           <button
+            title="paragraph"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.paragraph() }"
@@ -58,6 +64,7 @@
           </button>
 
           <button
+            title="heading level 1"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.heading({ level: 1 }) }"
@@ -67,6 +74,7 @@
           </button>
 
           <button
+            title="heading level 2"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.heading({ level: 2 }) }"
@@ -76,6 +84,7 @@
           </button>
 
           <button
+            title="heading level 3"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.heading({ level: 3 }) }"
@@ -85,6 +94,7 @@
           </button>
 
           <button
+            title="bullet list"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.bullet_list() }"
@@ -94,6 +104,7 @@
           </button>
 
           <button
+            title="ordered list"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.ordered_list() }"
@@ -103,6 +114,7 @@
           </button>
 
           <button
+            title="quote block"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.blockquote() }"
@@ -112,6 +124,7 @@
           </button>
 
           <button
+            title="code block"
             type="button"
             class="menubar__button"
             :class="{ 'is-active': isActive.code_block() }"
@@ -121,25 +134,36 @@
           </button>
 
           <button
-            type="button" class="menubar__button" @click="commands.horizontal_rule">
+            title="horizontal line"
+            type="button"
+            class="menubar__button"
+            @click="commands.horizontal_rule"
+          >
             <EditorMenuBarIcon name="hr" />
           </button>
 
           <button
-            type="button" class="menubar__button" @click="commands.undo">
+            title="undo"
+            type="button"
+            class="menubar__button"
+            @click="commands.undo"
+          >
             <EditorMenuBarIcon name="undo" />
           </button>
 
           <button
-            type="button" class="menubar__button" @click="commands.redo">
+            title="redo"
+            type="button"
+            class="menubar__button"
+            @click="commands.redo"
+          >
             <EditorMenuBarIcon name="redo" />
           </button>
         </div>
       </editor-menu-bar>
     </div>
     <div id="editorContentDiv" v-bind:style="contentStyle">
-      
-      <editor-content :editor="editor"/>
+      <editor-content :editor="editor" />
     </div>
   </div>
 </template>
@@ -177,8 +201,7 @@ export default {
   },
   data() {
     return {
-      editor: null,
-      editorContentHtml: "html"
+      editor: null
     };
   },
   // prettier-ignore
@@ -187,6 +210,13 @@ export default {
     contentInitialValue:  String,
     contentProperty:      String,
     contentStyle:         String
+  },
+  watch: {
+    contentInitialValue: function(value) {
+      if (this.editor && this.editor.getHTML().length <= 7)
+        // content is empty ('<p></p>')
+        this.editor.setContent(value); // Editor.onUpdate() is not triggered
+    }
   },
   mounted() {
     this.editor = new Editor({
@@ -209,7 +239,6 @@ export default {
         new Underline(),
         new History()
       ],
-      content: this.contentInitialValue,
       onUpdate: ({ getJSON, getHTML }) => {
         this.$store.dispatch(this.contentDispatch, {
           property: this.contentProperty,
@@ -225,12 +254,6 @@ export default {
 </script>
 
 <style>
-/*#editorContentDiv {*/
-  /* edit height value here and scroll content without menubar */
-  /* comment height property to allow area to grow */
-  /*height: 200px;
-  overflow: auto;
-}*/
 #editorMenuBarDiv {
   text-align: center;
 }
@@ -274,7 +297,7 @@ export default {
   background-color: rgba(0, 0, 0, 0.1);
 }
 .menubar span.menubar__button {
-  font-size: 13.3333px;
+  font-size: 8px; /*13.3333px;*/
 }
 .menububble {
   position: absolute;
@@ -295,5 +318,7 @@ export default {
 }
 .ProseMirror {
   outline: none;
+  height: 5em; /** increase edit area to render mouse pointer as a cursor */
+  margin: 0.5rem;
 }
 </style>

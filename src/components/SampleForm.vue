@@ -20,9 +20,9 @@
       <div id="richTextEditorDiv">
         <RichTextEditor
           v-bind:content-dispatch="RICH_TEXT_EDITOR.DISPATCH_NAME"
-          v-bind:content-initial-value="editorContentHtml"
           v-bind:content-property="RICH_TEXT_EDITOR.PROPERTY_NAME"
           v-bind:content-style="RICH_TEXT_EDITOR.STYLE"
+          v-bind:content-initial-value="editorContentHtml"
         />
       </div>
       <br /><br />
@@ -40,11 +40,7 @@ export default {
     RichTextEditor
   },
   computed: {
-    ...mapGetters([
-      "getFirstName",
-      "getLastName",
-      "getEditorContentHtml"
-    ]),
+    ...mapGetters(["getFirstName", "getLastName", "getEditorContentHtml"]),
     ...mapState(["sampleFormStore"]),
     firstName: {
       get() {
@@ -93,12 +89,12 @@ export default {
 </script>
 
 <style>
-  #richTextEditorDiv {
-    border-color: rgb(182, 181, 181);
-    border-radius: 5px;
-    border-style: solid;
-    border-width: thin;
-    position: relative;
-    width: 100%;
-  }
+#richTextEditorDiv {
+  border-color: rgb(182, 181, 181);
+  border-radius: 5px;
+  border-style: solid;
+  border-width: thin;
+  position: relative;
+  width: 100%;
+}
 </style>
