@@ -17,8 +17,12 @@
         v-model="lastName"
       /><br /><br />
       <slot />
-      <div id="richTextEditorDiv">
+      <div id="richTextEditorDiv" class="form-group">
+        <label for="richTextEditor" class="text-left" style="margin: 0.5rem;">Rich Text Editor</label>
         <RichTextEditor
+          id="richTextEditor"
+          class="border rounded text-left border-color"
+          style="border-color: rgb(206, 212, 218);"
           v-bind:content-dispatch="RICH_TEXT_EDITOR.DISPATCH_NAME"
           v-bind:content-property="RICH_TEXT_EDITOR.PROPERTY_NAME"
           v-bind:content-style="RICH_TEXT_EDITOR.STYLE"
