@@ -89,7 +89,10 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 ## Sample
 Open and try [SampleForm vue component](./src/components/SampleForm.vue) for an example implementation. 
 
- 1. npm run dev-build; cd ./dist; node ../test/server.js index.html 8080
+ 1. Run sample by building it first and then hosting it with NodeJS. 
+ ``` bash
+   npm run dev-build; cd ./dist; node ../test/server.js index.html 8080
+ ```
 ---
 
         
