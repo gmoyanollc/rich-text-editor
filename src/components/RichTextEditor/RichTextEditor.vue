@@ -246,6 +246,8 @@ export default {
         });
       }
     });
+    if (this.editor.getHTML().length <= 7)
+      this.editor.setContent(this.contentInitialValue);
   },
   beforeDestroy() {
     this.editor.destroy();
