@@ -93,6 +93,7 @@ Open and try [SampleForm vue component](./src/components/SampleForm.vue) for an 
  ``` bash
    npm run dev-build; cd ./dist; node ../test/server.js index.html 8080
  ```
+ 2. Open the [link](http://127.0.0.1:8080/) `http://127.0.0.1:8080/` with a browser.
 ---
 
         
