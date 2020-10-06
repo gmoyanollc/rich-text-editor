@@ -180,15 +180,15 @@ export default {
   props: {
     name: {},
     size: {
-      default: "normal"
+      default: 'normal',
     },
     modifier: {
-      default: null
+      default: null,
     },
     fixAlign: {
-      default: true
-    }
-  }
+      default: true,
+    },
+  },
 };
 </script>
 
@@ -203,7 +203,7 @@ export default {
   top: -0.05rem;
   fill: currentColor;
   // &.has-align-fix {
-  // 	top: -.1rem;
+  //   top: -.1rem;
   // }
   &__svg {
     display: inline-block;

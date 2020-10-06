@@ -1,17 +1,19 @@
 {
   "name": "editor",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A Vue.js project",
   "author": "g",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "lint": "vue-cli-service lint",
     "start": "npm run dev",
     "build": "node build/build.js",
     "dev-build": "node build/dev-build.js"
   },
   "dependencies": {
     "@babel/polyfill": "^7.10.1",
+    "@vue/cli-service": "^4.5.6",
     "babel-core": "^6.26.3",
     "bootstrap": "^4.5.0",
     "bootstrap-vue": "^2.15.0",
@@ -26,6 +28,8 @@
     "@babel/core": "^7.10.2",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/preset-env": "^7.10.2",
+    "@vue/cli-plugin-eslint": "^4.5.6",
+    "@vue/eslint-config-airbnb": "^5.1.0",
     "autoprefixer": "^7.1.2",
     "babel-helper-vue-jsx-merge-props": "^2.0.3",
     "babel-loader": "^7.1.5",
@@ -37,6 +41,8 @@
     "chalk": "^2.0.1",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^3.6.0",
+    "eslint": "^7.10.0",
+    "eslint-plugin-vue": "^7.0.1",
     "extract-text-webpack-plugin": "^3.0.0",
     "file-loader": "^1.1.4",
     "friendly-errors-webpack-plugin": "^1.6.1",
@@ -73,5 +79,25 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "@vue/airbnb"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "EditorMenuBarIcon.vue"
+        ],
+        "rules": {
+          "max-len": "off"
+        }
+      }
+    ]
+  }
 }

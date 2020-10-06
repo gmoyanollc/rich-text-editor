@@ -39,59 +39,58 @@
 </template>
 
 <script>
-import { mapActions, mapGetters, mapState } from "vuex";
-import RichTextEditor from "./RichTextEditor/RichTextEditor";
+import { mapGetters, mapState } from 'vuex';
+import RichTextEditor from './RichTextEditor/RichTextEditor.vue';
+
 export default {
-  name: "SampleForm",
+  name: 'SampleForm',
   components: {
-    RichTextEditor
+    RichTextEditor,
   },
   computed: {
-    ...mapGetters(["getFirstName", "getLastName", "getEditorContentHtml"]),
-    ...mapState(["sampleFormStore"]),
+    ...mapGetters(['getFirstName', 'getLastName', 'getEditorContentHtml']),
+    ...mapState(['sampleFormStore']),
     firstName: {
       get() {
         return this.getFirstName;
       },
       set(value) {
-        this.$store.dispatch("setSampleFormStore", {
-          property: "firstName",
-          value: value
+        this.$store.dispatch('setSampleFormStore', {
+          property: 'firstName',
+          value,
         });
-      }
+      },
     },
     lastName: {
       get() {
         return this.getLastName;
       },
       set(value) {
-        this.$store.dispatch("setSampleFormStore", {
-          property: "lastName",
-          value: value
+        this.$store.dispatch('setSampleFormStore', {
+          property: 'lastName',
+          value,
         });
-      }
+      },
     },
     editorContentHtml: {
       get() {
         return this.getEditorContentHtml;
       },
       set(value) {
-        this.$store.dispatch("setSampleFormStore", {
-          property: "editorContentHtml",
-          value: value
+        this.$store.dispatch('setSampleFormStore', {
+          property: 'editorContentHtml',
+          value,
         });
-      }
-    }
+      },
+    },
   },
-  data: () => {
-    return {
-      RICH_TEXT_EDITOR: {
-        DISPATCH_NAME: "setSampleFormStore",
-        PROPERTY_NAME: "editorContentHtml",
-        STYLE: "height: 200px; overflow: auto;"
-      }
-    };
-  }
+  data: () => ({
+    RICH_TEXT_EDITOR: {
+      DISPATCH_NAME: 'setSampleFormStore',
+      PROPERTY_NAME: 'editorContentHtml',
+      STYLE: 'height: 200px; overflow: auto;',
+    },
+  }),
 };
 </script>
 

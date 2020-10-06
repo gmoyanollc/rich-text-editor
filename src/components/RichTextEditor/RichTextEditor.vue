@@ -169,7 +169,7 @@
 </template>
 
 <script>
-import { Editor, EditorContent, EditorMenuBar } from "tiptap";
+import { Editor, EditorContent, EditorMenuBar } from 'tiptap';
 import {
   Blockquote,
   CodeBlock,
@@ -187,36 +187,36 @@ import {
   Link,
   Strike,
   Underline,
-  History
-} from "tiptap-extensions";
-import EditorMenuBarIcon from "./EditorMenuBarIcon";
-import { mapGetters, mapState } from "vuex";
+  History,
+} from 'tiptap-extensions';
+import EditorMenuBarIcon from './EditorMenuBarIcon.vue';
 
 export default {
-  name: "TiptapEditor",
+  name: 'TiptapEditor',
   components: {
     EditorMenuBar,
     EditorContent,
-    EditorMenuBarIcon
+    EditorMenuBarIcon,
   },
   data() {
     return {
-      editor: null
+      editor: null,
     };
   },
   // prettier-ignore
-  props: { 
-    contentDispatch:      String,
-    contentInitialValue:  String,
-    contentProperty:      String,
-    contentStyle:         String
+  props: {
+    contentDispatch: String,
+    contentInitialValue: String,
+    contentProperty: String,
+    contentStyle: String,
   },
   watch: {
-    contentInitialValue: function(value) {
-      if (this.editor && this.editor.getHTML().length <= 7)
+    contentInitialValue(value) {
+      if (this.editor && this.editor.getHTML().length <= 7) {
         // content is empty ('<p></p>')
-        this.editor.setContent(value); // Editor.onUpdate() is not triggered
-    }
+        this.editor.setContent(value);
+      } // Editor.onUpdate() is not triggered
+    },
   },
   mounted() {
     this.editor = new Editor({
@@ -237,21 +237,20 @@ export default {
         new Italic(),
         new Strike(),
         new Underline(),
-        new History()
+        new History(),
       ],
-      onUpdate: ({ getJSON, getHTML }) => {
+      onUpdate: ({ getHTML }) => {
         this.$store.dispatch(this.contentDispatch, {
           property: this.contentProperty,
-          value: getHTML()
+          value: getHTML(),
         });
-      }
+      },
     });
-    if (this.editor.getHTML().length <= 7)
-      this.editor.setContent(this.contentInitialValue);
+    if (this.editor.getHTML().length <= 7) this.editor.setContent(this.contentInitialValue);
   },
   beforeDestroy() {
     this.editor.destroy();
-  }
+  },
 };
 </script>
 
